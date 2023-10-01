@@ -20,9 +20,14 @@ Route::get('/', function () {
 
 Route::get('/hello','App\Http\Controllers\HelloController@index');
 
+Route::get('/admin','App\Http\Controllers\AdminController@index');
 
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

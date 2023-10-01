@@ -10,5 +10,7 @@ class HelloController extends Controller
     {
         $text = "Hello Cruel World";
         return view('hello_index', ['text' => $text]);
+
+
     }
 }
