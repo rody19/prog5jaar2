@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\LoginRegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,13 @@ Route::get('/hello','App\Http\Controllers\HelloController@index');
 
 Route::get('/admin','App\Http\Controllers\AdminController@index');
 
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+});
+
 
 
 Auth::routes();
@@ -31,3 +38,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+
+//route::get('/login', function (){
+//return view('login');
+//});
