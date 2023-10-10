@@ -7,6 +7,9 @@
     <meta name="generator" content="Hugo 0.118.2">
     <title>Album example · Bootstrap v5.3</title>
 
+
+
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
 
@@ -107,6 +110,8 @@
 
 </head>
 <body>
+
+
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -184,6 +189,26 @@
             </button>
         </div>
     </div>
+{{--    //hieronder de searchbar--}}
+
+        <div class="collapse text-bg-dark" id="navbarHeader">
+            <!-- ... (existing code) ... -->
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <!-- ... (existing code) ... -->
+                </a>
+                <!-- Add the search bar here -->
+                <div class="container">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="basic-addon2">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </header>
 
 <main>
