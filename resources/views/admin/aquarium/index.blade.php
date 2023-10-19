@@ -40,5 +40,14 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 <a href="{{ route('aquarium.show', ['aquarium' => $aquariums -> id]) }}"> Details </a>
             </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+{{--                <a href="{{ route('aquarium.update', $aquariums -> id) }}"> update </a>--}}
+                <a href="{{ route('aquarium.update', $aquariums->id) }}"> update </a>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{--                <a href="{{ route('aquarium.update', $aquariums -> id) }}"> update </a>--}}
+                <a href="{{ route('aquarium.delete', $aquariums->id) }}"> delete </a>
+            </td>
+
         </tr>
 @endforeach

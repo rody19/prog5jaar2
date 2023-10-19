@@ -50,6 +50,9 @@ Route::get('/search', 'SearchController@index')->name('search');
 
 Route::resource('/admin/aquarium', AquariumController::class);
 
+Route::get('admin/aquarium/{aquarium}/delete', [AquariumController::class, 'delete'])
+    ->name('aquarium.delete');
+
 //route::get('/login', function (){
 //return view('login');
 //});
