@@ -7,6 +7,10 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="{{ route('aquarium') }}">{{ __('Aquarium') }}</a>
+                </ul>
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

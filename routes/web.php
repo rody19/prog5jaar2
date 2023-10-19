@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\Admin\AquariumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,11 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/',[AquariumController::class, 'index']);
+
+Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, 'index'])->name('aquarium');
+
 
 Route::get('/hello','App\Http\Controllers\HelloController@index');
 
@@ -42,6 +48,7 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 
 Route::get('/search', 'SearchController@index')->name('search');
 
+Route::resource('/admin/aquarium', AquariumController::class);
 
 //route::get('/login', function (){
 //return view('login');
