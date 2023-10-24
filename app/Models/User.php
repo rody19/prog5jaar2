@@ -44,10 +44,10 @@ class User extends Authenticatable
     ];
 
     //user heeft meerdere taken
-    public function tasks()
-    {
-        return $this->hasMany(Task::class);
-    }
+//    public function tasks()
+//    {
+//        return $this->hasMany(Task::class);
+//    }
 
 
 }

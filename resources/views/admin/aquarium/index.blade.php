@@ -7,7 +7,7 @@
         focus:text-green-500 focus:border-green-500
         dark-focus:text-green-200 dark-focus:border-green-200
         transition duration-500 ease-in-out">
-        Create
+        Create aquarium
     </button>
 </a>
 
