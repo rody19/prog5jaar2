@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //user heeft meerdere taken
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+
 }

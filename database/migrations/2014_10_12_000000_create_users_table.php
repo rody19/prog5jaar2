@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            //hieronder zorgt ervoor dat de rollen erkunnen
+            $table->bigInteger('role')->default(0);
         });
     }
 
@@ -29,4 +31,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
 };

@@ -53,6 +53,9 @@ Route::resource('/admin/aquarium', AquariumController::class);
 Route::get('admin/aquarium/{aquarium}/delete', [AquariumController::class, 'delete'])
     ->name('aquarium.delete');
 
-//route::get('/login', function (){
-//return view('login');
-//});
+//hier ga je naar  de update pagina
+Route::get('admin/aquarium/{aquarium}/update', [AquariumController::class, 'update'])
+    ->name('aquarium.update');
+// hier ga je naar de edit functie
+Route::post('admin/aquarium/{aquarium}/edit', [AquariumController::class, 'edit'])
+    ->name('aquarium.edit');

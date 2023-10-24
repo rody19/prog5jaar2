@@ -1,3 +1,5 @@
+<link rel="shortcut icon" href="{{ asset('images/frans.jpg') }}" type='image/x-icon'>
+
 <a href="{{ route('aquarium.create') }}">
     <button
         class="ml-6 py-2 block border-b-2 border-transparent
@@ -14,13 +16,13 @@
     <thead class="bg-gray divide-y divide-gray-200">
     <tr>
         <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            Games
+            Aquariums
         </th>
         <th class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Naam game
+            Naam vissen
         </th>
         <th class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Info Game
+            Info vissen
         </th>
 
     </tr>
@@ -45,7 +47,7 @@
                 <a href="{{ route('aquarium.update', $aquariums->id) }}"> update </a>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {{--                <a href="{{ route('aquarium.update', $aquariums -> id) }}"> update </a>--}}
+
                 <a href="{{ route('aquarium.delete', $aquariums->id) }}"> delete </a>
             </td>
 

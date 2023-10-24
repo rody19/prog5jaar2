@@ -1,8 +1,9 @@
-<form id="form" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4"
-      action="{{ route('$aquarium.update',$aquariums->id) }}" method="POST">
-    @method('PUT')
-    @csrf
 
+{{--mensen die op de pagina komen en alles ingevuld hebben worden daarna naar de aquarium edit page gestuurd--}}
+<form id="form" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4"
+      action="{{ route('aquarium.edit', $aquarium->id ) }}" method="POST">
+    @method('Post')
+    @csrf
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
             Name
@@ -23,3 +24,4 @@
     </div>
     </div>
 </form>
+
