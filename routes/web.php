@@ -24,7 +24,7 @@ Route::get('/',[AquariumController::class, 'index']);
 Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, 'index'])->name('aquarium');
 
 
-Route::get('/hello','App\Http\Controllers\HelloController@index');
+Route::get('/hello','App\Http\Controllers\HelloController@index')->middleware('auth', 'onlyAdmin');
 
 Route::get('/admin','App\Http\Controllers\AdminController@index');
 
@@ -35,6 +35,8 @@ Route::controller(LoginRegisterController::class)->group(function() {
 //    Route::get('/logout', 'logout')->name('logout');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
 });
+
+
 
 
 
@@ -56,6 +58,9 @@ Route::get('admin/aquarium/{aquarium}/delete', [AquariumController::class, 'dele
 //hier ga je naar  de update pagina
 Route::get('admin/aquarium/{aquarium}/update', [AquariumController::class, 'update'])
     ->name('aquarium.update');
+
 // hier ga je naar de edit functie
 Route::post('admin/aquarium/{aquarium}/edit', [AquariumController::class, 'edit'])
     ->name('aquarium.edit');
+
+

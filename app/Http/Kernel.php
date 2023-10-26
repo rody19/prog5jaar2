@@ -1,5 +1,5 @@
 <?php
-
+// bepaald de rechten en rollen binnen een aplicatie
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'onlyAdmin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 }

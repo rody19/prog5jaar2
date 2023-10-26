@@ -42,6 +42,9 @@ public function show ($id) {
 //die zoekt de id(aquarium)
 public function update ($id){
     $aquarium = Aquarium::find($id);
+
+
+
     return view('admin.aquarium.update', compact('aquarium'));
 }
 
@@ -62,6 +65,5 @@ public function delete (Aquarium $aquarium){
         $aquarium->delete();
         return redirect()->route('aquarium.index')->with('status', 'Info deleted');
     }
-
 
 }

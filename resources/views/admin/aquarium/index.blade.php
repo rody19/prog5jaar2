@@ -1,15 +1,18 @@
-<link rel="shortcut icon" href="{{ asset('images/frans.jpg') }}" type='image/x-icon'>
+{{--<link rel="shortcut icon" href="{{ asset('images/frans.jpg') }}" type='image/x-icon'>--}}
 
 <a href="{{ route('aquarium.create') }}">
     <button
-        class="ml-6 py-2 block border-b-2 border-transparent
-        focus:outline-none font-medium capitalize text-center
-        focus:text-green-500 focus:border-green-500
-        dark-focus:text-green-200 dark-focus:border-green-200
-        transition duration-500 ease-in-out">
+        class="">
         Create aquarium
     </button>
 </a>
+<a href="{{ route('home') }}">
+    <button
+        class="">
+        user home
+    </button>
+</a>
+
 
 
 <table class="table-fixed">
@@ -19,7 +22,7 @@
             Aquariums
         </th>
         <th class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Naam vissen
+
         </th>
         <th class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             Info vissen
