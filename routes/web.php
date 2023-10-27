@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\Admin\AquariumController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfielController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +17,12 @@ use App\Http\Controllers\Admin\AquariumController;
 */
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/',[AquariumController::class, 'index']);
+Route::get('/home',[HomeController::class, 'index']);
 
 Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, 'index'])->name('aquarium');
 
@@ -27,17 +30,6 @@ Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, '
 Route::get('/hello','App\Http\Controllers\HelloController@index')->middleware('auth', 'onlyAdmin');
 
 Route::get('/admin','App\Http\Controllers\AdminController@index');
-
-Route::controller(LoginRegisterController::class)->group(function() {
-    Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
-//    Route::get('/logout', 'logout')->name('logout');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-});
-
-
-
 
 
 Auth::routes();
@@ -63,4 +55,13 @@ Route::get('admin/aquarium/{aquarium}/update', [AquariumController::class, 'upda
 Route::post('admin/aquarium/{aquarium}/edit', [AquariumController::class, 'edit'])
     ->name('aquarium.edit');
 
+// Show user profile
+Route::get('/profiel', [ProfielController::class, 'show'])->name('profiel.show');
 
+// Update user profile
+Route::put('/profiel', [ProfielController::class, 'update'])->name('profiel.update');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

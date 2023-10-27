@@ -1,5 +1,6 @@
 {{--<link rel="shortcut icon" href="{{ asset('images/frans.jpg') }}" type='image/x-icon'>--}}
-
+@extends('layouts.app')
+@section('content')
 <a href="{{ route('aquarium.create') }}">
     <button
         class="">
@@ -56,3 +57,4 @@
 
         </tr>
 @endforeach
+@endsection

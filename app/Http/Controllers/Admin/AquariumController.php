@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Requests\AquariumStoreRequest;
 use App\Http\Requests\AquariumUpdateRequest;
 use App\Models\Aquarium;
@@ -16,13 +17,22 @@ public function index()
 {
     $aquarium = Aquarium::all();
 
-    return view('admin.aquarium.index', compact('aquarium'));
+    if (auth()->user()->role == 1) {
+        return view('admin.aquarium.index', compact('aquarium'));
+    }
+    else {
+        return view('home', compact('aquarium'));
+    }
 }
 
 public function create(){
 
-    return view('admin.aquarium.create');
-
+    if (auth()->user()->role == 1) {
+        return view('admin.aquarium.create');
+    }
+    else {
+        return view('home');
+    }
 }
 
 public function store (AquariumStoreRequest $request){
@@ -36,21 +46,33 @@ public function store (AquariumStoreRequest $request){
 public function show ($id) {
 
     $aquarium = Aquarium::find($id);
-    return view('admin.aquarium.show', compact('aquarium'));
+
+    if (auth()->user()->role == 1) {
+        return view('admin.aquarium.show', compact('aquarium'));
+    }
+    else {
+        return view('home');
+    }
 }
 
 //die zoekt de id(aquarium)
 public function update ($id){
     $aquarium = Aquarium::find($id);
 
+    if (auth()->user()->role == 1) {
+        return view('admin.aquarium.update', compact('aquarium'));
+    }
+    else {
+        return view('home');
+    }
 
 
-    return view('admin.aquarium.update', compact('aquarium'));
 }
 
 //eerst word de id gezocht, daarna word de nam en description veranderd.
 public function edit(AquariumUpdateRequest $request, $id){
     $aquarium = Aquarium::find($id);
+//    $this->authorize('edit', $aquarium);
     $aquarium -> name = $request->name;
     $aquarium -> description = $request->description;
     $aquarium -> save();
@@ -58,12 +80,17 @@ public function edit(AquariumUpdateRequest $request, $id){
 }
 
 public function delete (Aquarium $aquarium){
-    return view('admin.aquarium.delete', compact('aquarium'));
+
+    if (auth()->user()->role == 1) {
+        return view('admin.aquarium.delete', compact('aquarium'));
+    }
+    else {
+        return view('home');
+    }
 }
 
     public function destroy(Aquarium $aquarium) {
         $aquarium->delete();
         return redirect()->route('aquarium.index')->with('status', 'Info deleted');
     }
-
 }
