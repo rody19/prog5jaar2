@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,6 +36,9 @@
                     @if ($userRole == 1)
                         <ul class="navbar-nav">
                             <a class="nav-link" href="{{ route('aquarium') }}">{{ __('Aquarium') }}</a>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
                         </ul>
                     @endif
                     <!-- Right Side Of Navbar -->

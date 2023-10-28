@@ -12,5 +12,8 @@ class Aquarium extends Model
 
     protected $fillable = ['name', 'description'];
 
-
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'aquaria_category');
+    }
 }

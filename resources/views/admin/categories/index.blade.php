@@ -1,7 +1,7 @@
 {{--<link rel="shortcut icon" href="{{ asset('images/frans.jpg') }}" type='image/x-icon'>--}}
 @extends('layouts.app')
 @section('content')
-<a href="{{ route('aquarium.create') }}">
+<a href="{{ route('categories.create') }}">
     <button
         class="">
         Create aquarium
@@ -32,33 +32,27 @@
     </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
-    @foreach($aquarium as $aquariums)
+    @foreach($categories as $category)
         <tr>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {{ $aquariums->id }}
+                {{ $category->id }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {{ $aquariums->name }}
+                {{ $category->name }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {{ $aquariums->description }}
+                <a href="{{ route('categories.show', ['category' => $category->id]) }}">Details</a>
             </td>
+
+
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <a href="{{ $aquariums->aquarium_status ? route('aquarium.uitzet', $aquariums->id) : route('aquarium.aanzet', $aquariums->id) }}">
-                    {{ $aquariums->aquarium_status ? 'uitzet' : 'aanzet' }}
-                </a>
+                <a href="{{ route('categories.update', ['category' => $category->id]) }}">Update</a>
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <a href="{{ route('aquarium.show', ['aquarium' => $aquariums -> id]) }}"> Details </a>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-{{--                <a href="{{ route('aquarium.update', $aquariums -> id) }}"> update </a>--}}
-                <a href="{{ route('aquarium.update', $aquariums->id) }}"> update </a>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 
-                <a href="{{ route('aquarium.delete', $aquariums->id) }}"> delete </a>
+                <a href="{{ route('categories.delete', $category->id) }}">Delete</a>
+
             </td>
 
 

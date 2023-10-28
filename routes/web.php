@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AquariumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfielController;
+use App\Http\Controllers\Admin\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[HomeController::class, 'index']);
+//Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home']);
+
+Route::get('/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('categories');
+
+Route::get('/categories/{categories}/delete', [CategoriesController::class, 'delete'])->name('categories.delete');
+
+Route::delete('/categories/{categories}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+
+Route::get('/categories/create', [CategoriesController::class, 'create'])->name('categories.create');
+
+Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
+
+Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('admin.categories.index');
+
+Route::get('/categories/{category}', [CategoriesController::class, 'show'])->name('categories.show');
+
+Route::get('/categories/{category}/update', [CategoriesController::class, 'update'])->name('categories.update');
 
 Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, 'index'])->name('aquarium');
 
@@ -31,10 +49,14 @@ Route::get('/hello','App\Http\Controllers\HelloController@index')->middleware('a
 
 Route::get('/admin','App\Http\Controllers\AdminController@index');
 
+Route::get('/aquarium/aanzet/{id}', [AquariumController::class, 'aanzet'])->name('aquarium.aanzet');
+
+Route::get('/aquarium/uitzet/{id}', [AquariumController::class, 'uitzet'])->name('aquarium.uitzet');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 Auth::routes();
 
@@ -65,3 +87,5 @@ Route::put('/profiel', [ProfielController::class, 'update'])->name('profiel.upda
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
