@@ -25,8 +25,8 @@
 <form id="searchForm" action="{{ route('search.index') }}" method="GET" class="mt-4">
         @csrf
         <div class="flex">
-            <input type="text" name="query" id="query" placeholder="Search aquaria by name" class="">
-
+            <input type="text" name="query" id="query" placeholder="Search category by name" class="">
+            <!-- Add a select field for tags -->
             <select name="category" id="category" class="">
                 <option value="">No Categories</option>
                 @foreach($categories as $category)
@@ -39,10 +39,10 @@
 
 <div class="container">
     <h1>Product Page</h1>
-    @if (count($aquarium) > 0)
+
         <div class="row">
 
-                @foreach ($aquarium->where('aquarium_status', true) as $aquariums)
+        @foreach ($searchResults as $aquariums)
 
                 <div class="col-md-4">
                     <div class="card">
@@ -63,8 +63,5 @@
                 </div>
             @endforeach
         </div>
-    @else
-        <p>No aquariums available.</p>
-    @endif
 </div>
 @endsection

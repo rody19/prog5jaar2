@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AquariumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfielController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\CategoriesController;
 
 /*
@@ -24,7 +25,8 @@ Route::get('/', function () {
 });
 
 //Route::get('/', [HomeController::class, 'home']);
-Route::get('/', [HomeController::class, 'home']);
+//Route::get('/', [HomeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('categories');
 
@@ -60,9 +62,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('auth', 'onlyAdmin');
 
-Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search.index');
+
 
 Route::resource('/admin/aquarium', AquariumController::class);
 

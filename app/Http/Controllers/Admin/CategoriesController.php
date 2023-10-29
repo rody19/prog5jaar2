@@ -32,23 +32,11 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'categories' => 'array', // Assuming you are expecting an array of category IDs
-        ]);
-
-        $category = new Category();
-        $category->name = $validatedData['name'];
-        $category->description = $validatedData['description'];
-        $category->save();
-
-        // Attach categories to the newly created category, if 'categories' were provided in the request
-        if (isset($validatedData['categories'])) {
-            $category->categories()->attach($validatedData['categories']);
-        }
-
+        $categories = new Category();
+        $categories -> name = $request->name;
+        $categories -> save();
         return redirect()->route('admin.categories.index')->with('status', 'Category created');
+    
     }
 
 

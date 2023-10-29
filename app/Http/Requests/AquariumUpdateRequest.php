@@ -22,7 +22,7 @@ class AquariumUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:aquaria|min:2|max:100',
+            'name' => 'required|string|unique:aquarium|min:2|max:100',
             'description' => 'required'
         ];
     }

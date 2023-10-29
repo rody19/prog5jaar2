@@ -36,7 +36,6 @@ public function create(){
     else {
         return view('home');
     }
-
 }
 
 public function store (AquariumStoreRequest $request){
@@ -45,7 +44,9 @@ public function store (AquariumStoreRequest $request){
     $aquarium -> description = $request->description;
     $aquarium->user_id = auth()->id();
     $aquarium -> save();
+
     $aquarium->categories()->attach($request->input('categories'));
+
     return redirect()->route('aquarium.index')->with('status', 'info created');
 }
 

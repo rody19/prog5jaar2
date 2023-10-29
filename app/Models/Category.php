@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
 
     public function aquarium()
-    {
-        return $this->belongsToMany(Aquarium::class);
-    }
+{
+    return $this->belongsToMany(Aquarium::class);
+}
 }

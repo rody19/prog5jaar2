@@ -10,10 +10,18 @@ class Aquarium extends Model
 {
     use HasFactory;
 
+    protected $table='aquarium';
+
     protected $fillable = ['name', 'description'];
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'aquaria_category');
+        return $this->belongsToMany(Category::class, 'aquarium_category');
+
     }
+
+//    public function categories()
+//    {
+//        return $this->belongsToMany(Category::class);
+//    }
 }

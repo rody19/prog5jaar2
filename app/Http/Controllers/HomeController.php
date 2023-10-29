@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Aquarium;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
     public function index ()
     {
         $aquarium = Aquarium::all();
+        $categories = Category::all();
 
-        return view('home', compact('aquarium'));
+        return view('home', compact('aquarium', 'categories'));
     }
 }

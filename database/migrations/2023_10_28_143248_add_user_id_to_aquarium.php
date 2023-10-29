@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('aquaria', function (Blueprint $table) {
+        Schema::table('aquarium', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->nullable(); // You can specify a default user ID
             // Add the user_id column
             $table->foreign('user_id')->references('id')->on('users'); // Define it as a foreign key referencing the 'id' column in 'users'
@@ -23,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('aquaria', function (Blueprint $table) {
+        Schema::table('aquarium', function (Blueprint $table) {
             $table->dropForeign(['user_id']); // Drop the foreign key constraint
             $table->dropColumn('user_id'); // Remove the 'user_id' column
         });
