@@ -20,6 +20,11 @@ class Aquarium extends Model
 
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'aquarium_id'); // Specify the correct foreign key name here
+    }
+
 //    public function categories()
 //    {
 //        return $this->belongsToMany(Category::class);

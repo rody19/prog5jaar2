@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfielController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,8 @@ Route::get('/categories', [App\Http\Controllers\Admin\CategoriesController::clas
 
 Route::get('/categories/{categories}/delete', [CategoriesController::class, 'delete'])->name('categories.delete');
 
-Route::delete('/categories/{categories}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+Route::delete('/categories/{category}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+
 
 Route::get('/categories/create', [CategoriesController::class, 'create'])->name('categories.create');
 
@@ -42,7 +44,11 @@ Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('a
 
 Route::get('/categories/{category}', [CategoriesController::class, 'show'])->name('categories.show');
 
-Route::get('/categories/{category}/update', [CategoriesController::class, 'update'])->name('categories.update');
+Route::put('/categories/{category}', [CategoriesController::class, 'update'])->name('categories.update');
+
+
+Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+
 
 Route::get('/aquarium', [App\Http\Controllers\Admin\AquariumController::class, 'index'])->name('aquarium');
 
@@ -79,6 +85,10 @@ Route::get('admin/aquarium/{aquarium}/update', [AquariumController::class, 'upda
 // hier ga je naar de edit functie
 Route::post('admin/aquarium/{aquarium}/edit', [AquariumController::class, 'edit'])
     ->name('aquarium.edit');
+
+Route::get('/comments/{aquarium}', [CommentsController::class, 'show'])->name('comments.show');
+
+Route::post('/comments/{aquarium}', [CommentsController::class, 'store'])->name('comments.store');
 
 // Show user profile
 Route::get('/profiel', [ProfielController::class, 'show'])->name('profiel.show');

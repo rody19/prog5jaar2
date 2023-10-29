@@ -1,8 +1,8 @@
 
 {{--mensen die op de pagina komen en alles ingevuld hebben worden daarna naar de aquarium edit page gestuurd--}}
 <form id="form" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4"
-      action="{{ route('categories.edit', $categories->id ) }}" method="POST">
-    @method('Post')
+      action="{{ route('categories.update', $categories->id ) }}" method="POST">
+    @method('PUT')
     @csrf
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">

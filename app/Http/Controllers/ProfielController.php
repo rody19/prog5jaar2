@@ -22,12 +22,16 @@ class ProfielController extends Controller
     {
         $user = auth()->user(); // Get the currently logged-in user
 
-        $user->update([
+        $data = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+        ];
 
-        ]);
+        $user->update($data);
+
+        $user->save(); // Save the updated user data, including the avatar path
+        
         return redirect()->route('profiel.show')->with('success', 'Profile updated successfully');
     }
 }

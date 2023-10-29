@@ -46,8 +46,8 @@
 
 
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <a href="{{ route('categories.update', ['category' => $category->id]) }}">Update</a>
-            </td>
+                        <a class="no-underline hover:underline" href="{{ route('categories.edit', ['category' => $category -> id]) }}"> Edit </a>
+                    </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 

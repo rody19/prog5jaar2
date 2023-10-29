@@ -16,16 +16,22 @@ class CategoriesController extends Controller
 
     public function index()
     {
-
         $categories = Category::all();
-
-        return view('admin.categories.index', compact('categories'));
+        if (auth()->user()->role == 1) {
+            return view('admin.categories.index', compact('categories'));
+        } else {
+            return redirect()->route('home');
+        }
 }
 
     public function create()
     {
 
-        return view('admin.categories.create');
+  if (auth()->user()->role == 1) {
+            return view('admin.categories.create');
+        } else {
+            return redirect()->route('home');
+        }
 
     }
 
@@ -44,8 +50,11 @@ class CategoriesController extends Controller
     {
         $categories = Category::find($id);
 
-
+        if (auth()->user()->role == 1) {
             return view('admin.categories.show', compact('categories'));
+        } else {
+            return redirect()->route('home');
+        }
 
     }
 
@@ -53,8 +62,11 @@ class CategoriesController extends Controller
     {
         $categories = Category::find($id);
 
-
+        if (auth()->user()->role == 1) {
             return view('admin.categories.edit', compact('categories'));
+        } else {
+            return redirect()->route('home');
+        }
 
     }
 
@@ -63,14 +75,17 @@ class CategoriesController extends Controller
         $categories = Category::find($id);
         $categories->name = $request->name;
         $categories->save();
-        return redirect()->route('categories.index')->with('status', 'Category Updated');
+        return redirect()->route('admin.categories.index')->with('status', 'Category Updated');
     }
 
     public function delete(Category $categories)
     {
 
-
+        if (auth()->user()->role == 1) {
             return view('admin.categories.delete', compact('categories'));
+        } else {
+            return redirect()->route('home');
+        }
     }
     public function destroy(Category $categories, $id)
 {
